@@ -20,6 +20,13 @@ def markdown_to_blocks(markdown):
         filtered_blocks.append(block.strip())
     return filtered_blocks
 
+def extract_title(markdown):
+    blocks = markdown_to_blocks(markdown)
+    for block in blocks:
+        if block.startswith("# "):
+            return block.lstrip("# ")
+    raise Exception("No heading found")
+
 def block_to_block_type(block):
     lines = block.split("\n")
 
